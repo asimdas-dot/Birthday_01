@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap');
 body { font-family: 'Plus Jakarta Sans', sans-serif; }
 .backdrop-blur-xl { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
-#cakeContainer { display: block; position: relative; width: 200px; height: 260px; margin: 0 auto; }
-#cake { display: block; position: relative; margin: 0 auto; transform: translateY(-220px); }
-#cake .cake-art { opacity: 0; transform-box: fill-box; transform-origin: center bottom; animation: cakeRise 3s 0.3s cubic-bezier(.22,1,.36,1) forwards; }
-@keyframes cakeRise { from { opacity: 0; transform: translateY(170px) scale(.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.velas { background: #fff; border-radius: 10px; position: absolute; top: 35px; left: 50%; margin-left: -5px; width: 10px; height: 35px; transform: translateY(-120px); backface-visibility: hidden; animation: in 700ms 3.5s ease-out forwards; z-index: 20; }
-.velas:after,.velas:before { background: rgba(255,0,0,.4); content: ''; position: absolute; width: 100%; height: 2.22px; }
+#cakeContainer { display: block; position: relative; width: 160px; height: 220px; margin: 0 auto; }
+#cake { display: block; position: relative; margin: 0 auto; transform: translateY(-175px); }
+.cake-layer { opacity: 0; transform-box: fill-box; transform-origin: center bottom; animation: layerRise .8s cubic-bezier(.22,1,.36,1) forwards; }
+.layer-bottom { animation-delay: .25s; }
+.layer-middle { animation-delay: 1s; }
+.layer-top { animation-delay: 1.75s; }
+@keyframes layerRise { from { opacity: 0; transform: translateY(100px) scale(.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.velas { background: #fff; border-radius: 10px; position: absolute; top: 52px; left: 50%; margin-left: -4px; width: 8px; height: 28px; transform: translateY(-100px); backface-visibility: hidden; animation: in .7s 2.9s ease-out forwards; z-index: 20; }
+.velas:after,.velas:before { background: rgba(255,0,0,.4); content: ''; position: absolute; width: 100%; height: 2px; }
 .velas:after { top: 25%; left: 0; }.velas:before { top: 45%; left: 0; }
-.fuego { border-radius: 100%; position: absolute; top: -20px; left: 50%; margin-left: -3.3px; width: 6.66px; height: 18px; }
+.fuego { border-radius: 100%; position: absolute; top: -18px; left: 50%; margin-left: -3px; width: 6px; height: 16px; }
 .fuego:nth-child(1) { animation: fuego 2s infinite; }.fuego:nth-child(2) { animation: fuego 1.5s infinite; }.fuego:nth-child(3) { animation: fuego 1s infinite; }.fuego:nth-child(4) { animation: fuego .5s infinite; }.fuego:nth-child(5) { animation: fuego .2s infinite; }
 .blowing .fuego { animation: blowOut 650ms ease-out forwards !important; }
 @keyframes blowOut { 0% { opacity: 1; transform: translateX(0) scale(1); } 45% { opacity: .9; transform: translateX(12px) translateY(-4px) scale(.8,1.2); } 100% { opacity: 0; transform: translateX(34px) translateY(-12px) scale(.05,.4); filter: blur(2px); } }
-@keyframes fuego { 0%,100% { background: rgba(254,248,97,.8); box-shadow: 0 0 40px 10px rgba(248,233,209,.6); transform: translateY(0) scale(1); } 50% { background: rgba(255,50,0,.3); box-shadow: 0 0 40px 20px rgba(248,233,209,.4); transform: translateY(-20px) scale(0); } }
+@keyframes fuego { 0%,100% { background: rgba(254,248,97,.8); box-shadow: 0 0 30px 8px rgba(248,233,209,.6); transform: translateY(0) scale(1); } 50% { background: rgba(255,50,0,.3); box-shadow: 0 0 30px 14px rgba(248,233,209,.4); transform: translateY(-16px) scale(0); } }
 @keyframes in { to { transform: translateY(0); } }
-.smoke { position: absolute; top: -25px; left: 50%; margin-left: -5px; width: 10px; height: 20px; background: rgba(220,220,220,.7); border-radius: 50%; filter: blur(3px); animation: rise 1.8s ease-out forwards; }
-@keyframes rise { 0% { opacity: .8; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-40px) scale(3); } }
+.smoke { position: absolute; top: -22px; left: 50%; margin-left: -4px; width: 8px; height: 18px; background: rgba(220,220,220,.7); border-radius: 50%; filter: blur(3px); animation: rise 1.8s ease-out forwards; }
+@keyframes rise { 0% { opacity: .8; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-36px) scale(3); } }
 @keyframes popIn { 0% { opacity: 0; transform: scale(.8) translateY(20px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
 .animate-popIn { animation: popIn .4s cubic-bezier(.175,.885,.32,1.275) forwards; }
