@@ -5,7 +5,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; }
 #cake { display: block; position: relative; margin: 0 auto; transform: translateY(-220px); }
 #cake .cake-art { opacity: 0; transform-box: fill-box; transform-origin: center bottom; animation: cakeRise 3s 0.3s cubic-bezier(.22,1,.36,1) forwards; }
 @keyframes cakeRise { from { opacity: 0; transform: translateY(170px) scale(.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
-.velas { background: #fff; border-radius: 10px; position: absolute; top: 58px; left: 50%; margin-left: -5px; width: 10px; height: 35px; transform: translateY(-120px); backface-visibility: hidden; animation: in 700ms 3.5s ease-out forwards; z-index: 20; }
+.velas { background: #fff; border-radius: 10px; position: absolute; top: 35px; left: 50%; margin-left: -5px; width: 10px; height: 35px; transform: translateY(-120px); backface-visibility: hidden; animation: in 700ms 3.5s ease-out forwards; z-index: 20; }
 .velas:after,.velas:before { background: rgba(255,0,0,.4); content: ''; position: absolute; width: 100%; height: 2.22px; }
 .velas:after { top: 25%; left: 0; }.velas:before { top: 45%; left: 0; }
 .fuego { border-radius: 100%; position: absolute; top: -20px; left: 50%; margin-left: -3.3px; width: 6.66px; height: 18px; }
