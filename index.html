@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make A Wish My Queen ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4 overflow-x-hidden">
+
+    <!-- Ambient Gradient Backlight -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+    </div>
+
+    <main class="w-full max-w-xl z-10 flex flex-col items-center">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-pink-500/10 text-pink-400 text-xs font-semibold tracking-wider uppercase border border-pink-500/20 mb-3">
+                ✨ Happy Birthday Baby ✨
+            </span>
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400">
+                Blow Out The Candle! 🎂
+            </h1>
+            <p id="instruction" class="text-slate-400 mt-2 text-sm sm:text-base">
+                Blow into your mic or click below to extinguish the flame!
+            </p>
+        </div>
+
+        <!-- Glass Card Container -->
+        <div class="w-full backdrop-blur-xl bg-slate-900/60 border border-slate-800 p-8 rounded-3xl shadow-2xl flex flex-col items-center relative overflow-hidden">
+            
+            <div id="statusBadge" class="mb-6 px-4 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30">
+                🎂 Your birthday cake is getting ready...
+            </div>
+
+            <!-- SVG Cake & Candle Container -->
+            <div id="cakeContainer">
+                <div class="velas" id="candle">
+                    <div id="flamesGroup">
+                        <div class="fuego"></div>
+                        <div class="fuego"></div>
+                        <div class="fuego"></div>
+                        <div class="fuego"></div>
+                        <div class="fuego"></div>
+                    </div>
+                    <div class="smoke hidden" id="smoke"></div>
+                </div>
+
+                <svg id="cake" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500" enable-background="new 0 0 200 500" xml:space="preserve">
+                    <path fill="#a88679" d="M173.667-13.94c-49.298-0 102.782-0 147.334-0c-3.999-0-4-16.002 0-16.002c44.697-0 96.586-0 147.334-0C177.667-29.942 177.668-13.94 173.667-13.94z"></path>
+                    <path fill="#8b6a60" d="M100-178.521c1.858 0 3.364 1.506 3.364 3.363v154.801c0 1.858-1.506 3.364-3.364 3.364s-3.364-1.506-3.364-3.364v-154.801c0-1.857 1.506-3.363 3.364-3.363z"></path>
+                    <path fill="#a88679" d="M173.667-15.929c-46.512 0-105.486 0-147.334 0c-3.999 0-4-16.002 0-16.002c43.566 0 97.96 0 147.334 0C177.667-31.931 177.666-15.929 173.667-15.929z"></path>
+                    <path fill="#8b6a60" d="M101.368-73.685v58.??z"></path>
+                    <path fill="#a88679" d="M173.667 21.571c-33.174 0-111.467 0-147.334 0c-4 0-4-16.002 0-16.002c39.836 0 105.982 0 147.334 0C177.668 5.569 177.667 21.571 173.667 21.571z"></path>
+                    <path fill="#fefae9" d="M104.812 113.216c0 3.119-2.164 5.67-4.812 5.67s-4.812-2.551-4.812-5.67V5.669C95.188 2.551 97.353 0 100 0s4.812 2.551 4.812 5.669v107.547z"></path>
+                    <rect x="10" y="475.571" fill="#fefae9" width="180" height="4"></rect>
+                </svg>
+            </div>
+
+            <!-- Animated Action Controls -->
+            <div id="actionControls" class="w-full flex flex-col gap-3 mt-6 z-20 opacity-0 pointer-events-none transition-opacity duration-500">
+                <button id="blowBtn" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold tracking-wide shadow-lg hover:shadow-pink-500/25 transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-wind"></i> Click to Blow Candle
+                </button>
+
+                <button id="cutBtn" class="hidden w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold tracking-wide shadow-lg hover:shadow-rose-500/25 transition-all active:scale-95 flex items-center justify-center gap-2 animate-bounce">
+                    <i class="fa-solid fa-utensils"></i> Cut The Cake! 🔪
+                </button>
+
+                <a id="enterHubBtn" href="main.html" class="hidden w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white font-extrabold tracking-wider text-center shadow-xl hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+                    ENTER CELEBRATION HUB <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cake Eat Popup Modal -->
+    <div id="eatModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl max-w-sm w-full text-center shadow-2xl relative animate-popIn">
+            <div class="text-6xl mb-4 animate-bounce">🍰</div>
+            <h3 class="text-2xl font-black text-pink-300">A Piece Of Cake For You!</h3>
+            <p class="text-xs text-slate-400 mt-2">Open wide, gorgeous! Here comes your special birthday slice!</p>
+
+            <button id="eatSliceBtn" class="w-full mt-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 font-bold text-white shadow-lg hover:shadow-emerald-500/25 transition-all active:scale-95">
+                Take A Bite! 😋
+            </button>
+        </div>
+    </div>
+
+    <script src="js/cake.js"></script>
+</body>
+</html>
