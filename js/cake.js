@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const eatModal = document.getElementById("eatModal");
     const eatSliceBtn = document.getElementById("eatSliceBtn");
     const actionControls = document.getElementById("actionControls");
-    const readyDelay = 4000;
+    const readyDelay = 7400;
 
     window.setTimeout(() => {
         if (actionControls) actionControls.classList.remove("opacity-0", "pointer-events-none");
